@@ -8,6 +8,7 @@ import { pokemonsList } from './data/pokemonsData.tsx'
 
 export const App = () => {
   // state
+  console.log('lol')
   return (
     <div className={styles.container}>
       <Header />
