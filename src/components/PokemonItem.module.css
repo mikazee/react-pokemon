@@ -47,10 +47,6 @@
     display: flex;
     align-items: center;
 
-    /*svg {*/
-    /*    color: blue;*/
-    /*}*/
-
     &:hover {
         background: white;
         svg {
@@ -69,17 +65,3 @@ svg {
     width: 25px;
     height: 25px;
 }
-
-
-/*.favBtn {*/
-/*    color: white;*/
-/*    &.active:hover {*/
-/*        color: blue;*/
-/*    }*/
-/*}*/
-
-/*.compareBtn {*/
-/*    color: white;*/
-/*    &.active:hover {*/
-/*        color: blue;*/
-/*    }*/

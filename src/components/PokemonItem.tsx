@@ -9,6 +9,14 @@ type Props = {
 }
 
 const PokemonItem: React.FC<Props> = ({ pokemon }) => {
+  const onFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation()
+    console.log(`${pokemon.name} clicked as Favorite`)
+  }
+  const onComparison = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation()
+    console.log(`${pokemon.name} clicked for Comparison`)
+  }
   return (
     <li onClick={() => console.log(`${pokemon.name} clicked`)} className={styles.item}>
       <div>
@@ -17,16 +25,10 @@ const PokemonItem: React.FC<Props> = ({ pokemon }) => {
         </h3>
       </div>
       <div className={styles.actions}>
-        <button
-          onClick={(e) => {
-            e.stopPropagation(), console.log(`${pokemon.name} clicked as Favorite`)
-          }}>
+        <button onClick={onFavorite}>
           <MdFavorite />
         </button>
-        <button
-          onClick={(e) => {
-            e.stopPropagation(), console.log(`${pokemon.name} clicked for Comparison`)
-          }}>
+        <button onClick={onComparison}>
           <FaCodeCompare />
         </button>
       </div>
