@@ -1,0 +1,42 @@
+.actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+}
+.actions button{
+    background: inherit;
+    border: 2px solid rgba(255, 255, 255, 0.80);
+    border-radius: 16px;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    color: white;
+    transition: 0.2s;
+
+    svg {
+        color: rgba(255, 255, 255, 0.80);
+        width: 25px;
+        height: 25px;
+    }
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.80);
+        border: 2px solid #2c3f7e;
+        color: #2c3f7e;
+        svg {
+            color: #2c3f7e;
+        }
+    }
+}
+.active {
+    background: rgba(255, 255, 255, 0.80);
+    border: 2px solid #2c3f7e;
+}
+
+.active svg {
+    color: #2c3f7e;
+}
