@@ -1,8 +1,7 @@
 import React from 'react'
-import { Pokemon } from '../types'
+import { Pokemon } from '../../types'
 import styles from './PokemonItem.module.css'
-import { MdFavorite } from 'react-icons/md'
-import { FaCodeCompare } from 'react-icons/fa6'
+import ActionButtons from '../button/ActionButtons.tsx'
 
 type Props = {
   pokemon: Pokemon
@@ -24,14 +23,12 @@ const PokemonItem: React.FC<Props> = ({ pokemon }) => {
           #{pokemon.id} {pokemon.name}
         </h3>
       </div>
-      <div className={styles.actions}>
-        <button onClick={onFavorite}>
-          <MdFavorite />
-        </button>
-        <button onClick={onComparison}>
-          <FaCodeCompare />
-        </button>
-      </div>
+      <ActionButtons
+        onComparison={onComparison}
+        onFavorite={onFavorite}
+        isFavorite={false}
+        isComparison={false}
+      />
     </li>
   )
 }

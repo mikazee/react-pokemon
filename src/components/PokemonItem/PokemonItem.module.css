@@ -7,15 +7,15 @@
     width: 25%;
     height: 25%;
     border-radius: 16px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
     border: 3px solid #2B71B8;
-    background-color: #FFCB03;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
     text-align: center;
     font-size: 16px;
 }
 .item:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: #2B71B8;
+    /*border: 3px solid #2B71B8;*/
 }
 
 @media (max-width: 768px) {
@@ -47,21 +47,25 @@
     display: flex;
     align-items: center;
 
+    svg {
+        color: rgba(255, 255, 255, 0.80);
+        width: 25px;
+        height: 25px;
+    }
+
     &:hover {
-        background: white;
+        background: rgba(255, 255, 255, 0.80);
+        border: 2px solid #2c3f7e;
         svg {
-            color: blue;
+            color: #2c3f7e;
         }
     }
     &.active {
-        background: #2B71B8;
+        background: rgba(255, 255, 255, 0.80);
+        border: 2px solid #2c3f7e;
         svg {
-            color: white;
+            color: #2c3f7e;
         }
     }
 }
-svg {
-    color: white;
-    width: 25px;
-    height: 25px;
-}
+

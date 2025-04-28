@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './PokemonList.module.css'
-import PokemonItem from './PokemonItem.tsx'
-import { Pokemon } from '../types'
+import PokemonItem from '../PokemonItem/PokemonItem.tsx'
+import { Pokemon } from '../../types'
 
 type PokemonListProps = {
   pokemons: Pokemon[]
