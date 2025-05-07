@@ -1,0 +1,126 @@
+.container {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.pageTitle {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: white;
+}
+
+.comparisonTable {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr 1fr;
+    gap: 0;
+    border-radius: 12px;
+    padding: 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.pokemonCard {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.firstRowItem {
+    padding: 1rem 2rem;
+}
+
+.deleteButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.5rem;
+    padding: 0.5rem 0;
+}
+
+.pokemonName {
+    margin: 0.5rem 0 0;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.pokemonId {
+    font-size: 0.9rem;
+    margin: 0.2rem 0;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.pokemonImage {
+    width: 150px;
+    height: 150px;
+    margin: 0.5rem auto;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.3));
+}
+
+.pokeballContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pokeball {
+    width: 40px;
+    height: 40px;
+    opacity: 0.9;
+}
+
+.measurement {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    font-size: 1rem;
+    color: white;
+}
+
+.icon {
+    font-size: 1.3rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.divider {
+    margin: 0 0.5rem;
+    grid-column: 1 / span 3;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.sectionHeader {
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.fullWidth {
+    grid-column: 1 / span 3;
+}
+
+.sectionHeader h3 {
+    margin: 0;
+}
+
+.statLabel {
+    padding: 0.8rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.statValue {
+    padding: 0.8rem;
+    text-align: center;
+}
+
+.bottomDivider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    margin-top: 0.5rem;
+}
+

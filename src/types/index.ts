@@ -1,6 +1,8 @@
 export type Pokemon = {
   id: number
   name: string
+  isFavorite: boolean
+  isComparison: boolean
 }
 
 export type PokemonDetails = {
