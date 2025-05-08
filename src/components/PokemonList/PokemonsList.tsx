@@ -1,10 +1,10 @@
 import React from 'react'
 import styles from './PokemonsList.module.css'
 import PokemonItem from '../PokemonItem/PokemonItem.tsx'
-import { Pokemon } from '../../types'
+import { PokemonDetails } from '../../types'
 
 type PokemonsListProps = {
-  pokemons: Pokemon[]
+  pokemons: PokemonDetails[]
   isFavoriteList?: boolean
 }
 
@@ -15,7 +15,7 @@ const PokemonsList: React.FC<PokemonsListProps> = ({ pokemons, isFavoriteList })
     <div className={styles.container}>
       <h2>{isFavoriteList && 'Favorite'} Pokemons List</h2>
       <ul className={styles.list}>
-        {pokemons.map((pokemon: Pokemon) => (
+        {pokemons.map((pokemon: PokemonDetails) => (
           <PokemonItem key={pokemon.id} pokemon={pokemon} />
         ))}
       </ul>

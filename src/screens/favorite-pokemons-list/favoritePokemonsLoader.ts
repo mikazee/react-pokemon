@@ -1,6 +1,6 @@
-import { pokemonsListData } from '../../data/pokemonsData.tsx'
-import { Pokemon } from '../../types'
+import { mockPokemons } from '../../data/pokemonsData.tsx'
+import { PokemonDetails } from '../../types'
 
 export const favoritePokemonsLoader = () => {
-  return pokemonsListData.filter((pokemon: Pokemon) => pokemon.isFavorite)
+  return mockPokemons.filter((pokemon: PokemonDetails) => pokemon.isFavorite)
 }

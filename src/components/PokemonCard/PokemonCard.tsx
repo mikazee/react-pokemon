@@ -12,9 +12,9 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
   return (
     <div className={styles.card}>
       <div className={styles.cardLeftSide}>
-        <div className={styles.cardTitle}>
-          <h2>{pokemon.name}</h2>
-          <p>#{pokemon.id}</p>
+        <div className={styles.title}>
+          <h2 className={styles.pokemonName}>{pokemon.name}</h2>
+          <p className={styles.pokemonId}>#{pokemon.id}</p>
         </div>
         <div className={styles.statsContainer}>
           <h3>Stats</h3>
@@ -30,8 +30,10 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
         </div>
       </div>
       <div className={styles.cardRightSide}>
-        <img src={pokemon.image} alt="Pokemon Image" />
-        <div className={styles.cardDescription}>
+        <div className={styles.pokemonImage}>
+          <img src={pokemon.image} alt="Pokemon Image" />
+        </div>
+        <div className={styles.measurement}>
           <ul>
             <li>
               <TbRulerMeasure2 />

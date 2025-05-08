@@ -1,7 +1,7 @@
 .card {
-    width: 50%;
-    max-width: 700px;
-    min-width: 500px;
+    width: 40%;
+    max-width: 600px;
+    min-width: 400px;
     height: 100%;
     border-radius: 20px;
     box-shadow: 0 5px 15px rgba(0,0,0, 0.2);
@@ -10,7 +10,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    gap: 1rem;
 }
 @media (max-width: 600px) {
     .card {
@@ -67,11 +66,32 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    gap: 1rem;
 }
-img {
-    width: 250px;
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
 }
-.cardDescription ul{
+.pokemonName {
+    margin: 0.5rem 0 0;
+    font-size: 1.8rem;
+    color: white;
+}
+
+.pokemonId {
+    font-size: 0.9rem;
+    margin: 0.2rem 0;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.pokemonImage img {
+    width: 200px;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.3));
+}
+
+.measurement ul{
         width: 100%;
         padding: 10px;
         list-style: none;

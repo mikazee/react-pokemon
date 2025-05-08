@@ -1,8 +1,8 @@
 import FavoritePokemonsList from '../../components/FavoritePokemons/FavoritePokemonsList.tsx'
 import { useLoaderData } from 'react-router-dom'
-import { Pokemon } from '../../types'
+import { PokemonDetails } from '../../types'
 
 export const FavoritePokemonsPage = () => {
-  const favoritePokemons = useLoaderData() as Pokemon[]
+  const favoritePokemons = useLoaderData() as PokemonDetails[]
   return <FavoritePokemonsList pokemons={favoritePokemons} isFavoriteList />
 }
