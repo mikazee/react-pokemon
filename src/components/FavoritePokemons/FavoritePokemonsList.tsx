@@ -1,10 +1,10 @@
 import React from 'react'
-import { Pokemon } from '../../types'
+import { PokemonDetails } from '../../types'
 
 import PokemonsList from '../PokemonList/PokemonsList.tsx'
 
 type FavoritePokemons = {
-  pokemons: Pokemon[]
+  pokemons: PokemonDetails[]
   isFavoriteList: boolean
 }
 

@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './ActionButtons.module.css'
 import { MdFavorite } from 'react-icons/md'
 import { FaCodeCompare } from 'react-icons/fa6'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 type Props = {
   onFavorite?: (e: React.MouseEvent<HTMLButtonElement>) => void
@@ -28,12 +28,12 @@ const ActionButtons: React.FC<Props> = ({
   if (isNav) {
     return (
       <div className={styles.actions}>
-        <Link
+        <NavLink
           to={favoriteLink}
           className={`${styles.button} ${styles.navButton} ${isFavorite ? styles.active : ''}`}>
           Favorites
           <MdFavorite />
-        </Link>
+        </NavLink>
         <Link
           to={comparisonLink}
           className={`${styles.button} ${styles.navButton}  ${isComparison ? styles.active : ''}`}>

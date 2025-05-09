@@ -6,16 +6,24 @@ import { FavoritePokemonsPage } from '../screens/favorite-pokemons-list'
 import PokemonsComparisonPage from '../screens/compare-pokemons'
 import { favoritePokemonsLoader } from '../screens/favorite-pokemons-list/favoritePokemonsLoader.ts'
 import { pokemonsComparisonLoader } from '../screens/compare-pokemons/comparePokemonsLoader.ts'
+import ErrorPage from '../screens/error-page'
+import PokemonDetailsPage, { pokemonDetailsLoader } from '../screens/pokemon-details'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: 'pokemons',
         element: <PokemonsListPage />,
         loader: pokemonsLoader
+      },
+      {
+        path: 'pokemon/:id',
+        element: <PokemonDetailsPage />,
+        loader: pokemonDetailsLoader
       },
       {
         path: 'favorites',

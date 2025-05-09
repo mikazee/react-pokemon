@@ -4,11 +4,11 @@ import PokemonCard from '../PokemonCard/PokemonCard.tsx'
 import styles from './PokemonDetails.module.css'
 import ActionButtons from '../button/ActionButtons.tsx'
 
-type PokemonDetailsPageProps = {
+type PokemonDetailsProps = {
   pokemon: PokemonDetails
 }
 
-const PokemonDetails: React.FC<PokemonDetailsPageProps> = ({ pokemon }) => {
+const PokemonDetails: React.FC<PokemonDetailsProps> = ({ pokemon }) => {
   const onFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation()
     console.log('Favorite clicked')
@@ -23,8 +23,8 @@ const PokemonDetails: React.FC<PokemonDetailsPageProps> = ({ pokemon }) => {
       <ActionButtons
         onComparison={onComparison}
         onFavorite={onFavorite}
-        isFavorite={false}
-        isComparison={false}
+        isFavorite={pokemon.isFavorite}
+        isComparison={pokemon.isComparison}
         showText
       />
     </div>

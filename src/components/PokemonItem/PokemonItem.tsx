@@ -1,10 +1,11 @@
 import React from 'react'
-import { Pokemon } from '../../types'
+import { PokemonDetails } from '../../types'
 import styles from './PokemonItem.module.css'
 import ActionButtons from '../button/ActionButtons.tsx'
+import { Link } from 'react-router-dom'
 
 type Props = {
-  pokemon: Pokemon
+  pokemon: PokemonDetails
 }
 
 const PokemonItem: React.FC<Props> = ({ pokemon }) => {
@@ -16,20 +17,24 @@ const PokemonItem: React.FC<Props> = ({ pokemon }) => {
     e.stopPropagation()
     console.log(`${pokemon.name} clicked for Comparison`)
   }
-  console.log({ pokemon })
+
   return (
     <li onClick={() => console.log(`${pokemon.name} clicked`)} className={styles.item}>
-      <div>
-        <h3>
-          #{pokemon.id} {pokemon.name}
-        </h3>
-      </div>
-      <ActionButtons
-        onComparison={onComparison}
-        onFavorite={onFavorite}
-        isFavorite={pokemon.isFavorite}
-        isComparison={pokemon.isComparison}
-      />
+      <Link className={styles.link} key={pokemon.id} to={`/pokemon/${pokemon.id}`}>
+        <div className={styles.leftSide}>
+          <div className={styles.title}>
+            <h3 className={styles.pokemonName}>{pokemon.name}</h3>
+            <p className={styles.pokemonId}>#{pokemon.id}</p>
+          </div>
+          <ActionButtons
+            onComparison={onComparison}
+            onFavorite={onFavorite}
+            isFavorite={pokemon.isFavorite}
+            isComparison={pokemon.isComparison}
+          />
+        </div>
+        <img className={styles.pokemonImage} src={pokemon.image} alt="Pokemon image" />
+      </Link>
     </li>
   )
 }
