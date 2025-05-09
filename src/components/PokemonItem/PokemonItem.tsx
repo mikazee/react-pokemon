@@ -16,6 +16,7 @@ const PokemonItem: React.FC<Props> = ({ pokemon }) => {
     e.stopPropagation()
     console.log(`${pokemon.name} clicked for Comparison`)
   }
+  console.log({ pokemon })
   return (
     <li onClick={() => console.log(`${pokemon.name} clicked`)} className={styles.item}>
       <div>
@@ -26,8 +27,8 @@ const PokemonItem: React.FC<Props> = ({ pokemon }) => {
       <ActionButtons
         onComparison={onComparison}
         onFavorite={onFavorite}
-        isFavorite={false}
-        isComparison={false}
+        isFavorite={pokemon.isFavorite}
+        isComparison={pokemon.isComparison}
       />
     </li>
   )
