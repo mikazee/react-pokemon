@@ -8,7 +8,7 @@ import { LuWeight } from 'react-icons/lu'
 
 type CompareProps = {
   pokemons: PokemonDetails[]
-  onRemovePokemon: (id: string) => void
+  onRemovePokemon: (id: number) => void
 }
 
 const PokemonsComparison: React.FC<CompareProps> = ({ pokemons, onRemovePokemon }) => {

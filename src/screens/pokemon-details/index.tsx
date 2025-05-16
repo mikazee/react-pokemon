@@ -1,9 +1,9 @@
 import PokemonDetails from '../../components/PokemonDetails/PokemonDetails.tsx'
-import { LoaderFunctionArgs, useLoaderData } from 'react-router-dom'
+import { useLoaderData } from 'react-router-dom'
 import { mockPokemons } from '../../data/pokemonsData.tsx'
 
-export const pokemonDetailsLoader = ({ params }: LoaderFunctionArgs) => {
-  const pokemon = mockPokemons.find((pokemon) => pokemon.id === params.id)
+export const pokemonDetailsLoader = () => {
+  const pokemon = mockPokemons
   if (!pokemon) {
     throw new Error('No pokemon found')
   }
