@@ -1,13 +1,12 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { RootLayout } from '../screens/root'
 import { PokemonsListPage } from '../screens/pokemons-list'
-import { pokemonsLoader } from '../screens/pokemons-list/pokemonsLoader.ts'
 import { FavoritePokemonsPage } from '../screens/favorite-pokemons-list'
 import PokemonsComparisonPage from '../screens/compare-pokemons'
 import { favoritePokemonsLoader } from '../screens/favorite-pokemons-list/favoritePokemonsLoader.ts'
 import { pokemonsComparisonLoader } from '../screens/compare-pokemons/comparePokemonsLoader.ts'
 import ErrorPage from '../screens/error-page'
-import PokemonDetailsPage, { pokemonDetailsLoader } from '../screens/pokemon-details'
+import PokemonDetailsPage from '../screens/pokemon-details'
 
 const router = createBrowserRouter([
   {
@@ -16,14 +15,12 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: 'pokemons',
-        element: <PokemonsListPage />,
-        loader: pokemonsLoader
+        index: true,
+        element: <PokemonsListPage />
       },
       {
         path: 'pokemon/:id',
-        element: <PokemonDetailsPage />,
-        loader: pokemonDetailsLoader
+        element: <PokemonDetailsPage />
       },
       {
         path: 'favorites',

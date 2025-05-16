@@ -5,7 +5,9 @@ export const RootLayout = () => {
   return (
     <>
       <Header />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
     </>
   )
 }

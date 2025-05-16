@@ -1,22 +1,26 @@
-export type Pokemon = {
+export type PokemonListItem = {
   id: number
   name: string
-  isFavorite: boolean
-  isComparison: boolean
+  url: string
+  image: string
+  isFavorite?: boolean
+  isComparison?: boolean
 }
 
-export type PokemonDetails = {
-  id: string
-  name: string
-  isFavorite: boolean
-  isComparison: boolean
+export type PokemonDetails = PokemonListItem & {
   height: number
   weight: number
-  image: string
   stats: Stat[]
 }
 
 export type Stat = {
   name: string
   value: number
+}
+
+export type PokemonApiResponse = {
+  count: number
+  next: string | null
+  previous: string | null
+  results: Array<{ name: string; url: string }>
 }
