@@ -9,7 +9,7 @@ const Header: React.FC = () => {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-        <Link to={'/pokemons'}>
+        <Link to={'/'}>
           <img src={logo} alt="Pokemon GO" />
         </Link>
       </div>

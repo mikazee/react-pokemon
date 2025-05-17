@@ -31,7 +31,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
       </div>
       <div className={styles.cardRightSide}>
         <div className={styles.pokemonImage}>
-          <img src={pokemon.image} alt="Pokemon Image" />
+          <img src={pokemon.image ? pokemon.image : undefined} alt="Pokemon Image" />
         </div>
         <div className={styles.measurement}>
           <ul>

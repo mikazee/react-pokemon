@@ -1,17 +1,21 @@
 import React from 'react'
-import { PokemonDetails } from '../../types'
+import { PokemonListItem } from '../../types'
 import styles from './PokemonItem.module.css'
 import ActionButtons from '../button/ActionButtons.tsx'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { toggleFavorite } from '../../store/pokemons/slice.ts'
 
 type Props = {
-  pokemon: PokemonDetails
+  pokemon: PokemonListItem
 }
 
 const PokemonItem: React.FC<Props> = ({ pokemon }) => {
+  const dispatch = useDispatch()
+
   const onFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation()
-    console.log(`${pokemon.name} clicked as Favorite`)
+    dispatch(toggleFavorite(pokemon.id))
   }
   const onComparison = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation()
