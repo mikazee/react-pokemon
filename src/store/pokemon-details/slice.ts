@@ -27,7 +27,7 @@ export const fetchPokemonById = createAsyncThunk(
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
 
       if (!response.ok) {
-        throw new Error(`Pokemon with id '${id}' not found`)
+        new Error(`Pokemon with id '${id}' not found`)
       }
 
       const data: PokemonDetailsApiResponse = await response.json()
