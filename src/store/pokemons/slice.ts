@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { PokemonListItem, PokemonApiResponse } from '../../types'
+import { PokemonListItem, PokemonsListApiResponse } from '../../types'
 
 type PokemonState = {
   count: number
@@ -27,7 +27,6 @@ export const fetchPokemons = createAsyncThunk(
   'pokemons/getPokemonsList',
   async (url: string, { rejectWithValue }) => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000))
       const response = await fetch(url)
       return await response.json()
     } catch (error) {
@@ -52,7 +51,7 @@ const pokemonsListSlice = createSlice({
       .addCase(fetchPokemons.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(fetchPokemons.fulfilled, (state, action: PayloadAction<PokemonApiResponse>) => {
+      .addCase(fetchPokemons.fulfilled, (state, action: PayloadAction<PokemonsListApiResponse>) => {
         state.isLoading = false
         state.count = action.payload.count
         state.next = action.payload.next
