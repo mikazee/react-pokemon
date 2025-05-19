@@ -4,7 +4,7 @@ import styles from './PokemonItem.module.css'
 import ActionButtons from '../button/ActionButtons.tsx'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { toggleFavorite } from '../../store/pokemons/slice.ts'
+import { toggleFavorite } from '../../store/favorite-pokemons/slice.ts'
 
 type Props = {
   pokemon: PokemonListItem
@@ -14,7 +14,7 @@ const PokemonItem: React.FC<Props> = ({ pokemon }) => {
   const dispatch = useDispatch()
 
   const onFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation()
+    e.preventDefault()
     dispatch(toggleFavorite(pokemon.id))
   }
   const onComparison = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -34,7 +34,7 @@ const PokemonItem: React.FC<Props> = ({ pokemon }) => {
             onComparison={onComparison}
             onFavorite={onFavorite}
             isFavorite={pokemon.isFavorite}
-            isComparison={pokemon.isComparison}
+            isComparison={false}
           />
         </div>
         <img className={styles.pokemonImage} src={pokemon.image} alt="Pokemon image" />

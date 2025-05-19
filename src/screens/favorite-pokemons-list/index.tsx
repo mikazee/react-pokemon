@@ -1,8 +1,11 @@
-import FavoritePokemonsList from '../../components/FavoritePokemons/FavoritePokemonsList.tsx'
-import { useLoaderData } from 'react-router-dom'
-import { PokemonDetails } from '../../types'
+import PokemonsList from '../../components/PokemonList/PokemonsList.tsx'
+import { useSelector } from 'react-redux'
+import { getPokemonsFavFilterList } from '../../store/pokemons/selectors.ts'
 
 export const FavoritePokemonsPage = () => {
-  const favoritePokemons = useLoaderData() as PokemonDetails[]
-  return <FavoritePokemonsList pokemons={favoritePokemons} isFavoriteList />
+  const filteredPokemons = useSelector(getPokemonsFavFilterList(true))
+  if (filteredPokemons.length === 0) {
+    return <h3>You don't have a favorite Pokemons</h3>
+  }
+  return <PokemonsList pokemons={filteredPokemons} isFavoriteList />
 }

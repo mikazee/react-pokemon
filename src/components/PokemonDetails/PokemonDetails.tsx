@@ -10,8 +10,7 @@ type PokemonDetailsProps = {
 
 const PokemonDetails: React.FC<PokemonDetailsProps> = ({ pokemon }) => {
   const onFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation()
-    console.log('Favorite clicked')
+    e.preventDefault()
   }
   const onComparison = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation()

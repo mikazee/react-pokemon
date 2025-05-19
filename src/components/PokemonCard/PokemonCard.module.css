@@ -59,6 +59,10 @@ p {
         align-items: flex-start;
         justify-content: center;
         gap: 0.7rem;
+
+        p {
+            text-transform: capitalize;
+        }
     }
 }
 
@@ -78,6 +82,7 @@ p {
     margin: 0.5rem 0 0;
     font-size: 1.8rem;
     color: white;
+    text-transform: capitalize;
 }
 
 .pokemonId {

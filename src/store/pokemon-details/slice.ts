@@ -48,7 +48,7 @@ export const fetchPokemonById = createAsyncThunk(
   }
 )
 
-const pokemonDetailsSlice = createSlice({
+export const pokemonDetailsSlice = createSlice({
   name: 'pokemon',
   initialState,
   reducers: {
@@ -74,5 +74,3 @@ const pokemonDetailsSlice = createSlice({
 })
 
 export const { setPokemonDetailsError } = pokemonDetailsSlice.actions
-
-export default pokemonDetailsSlice.reducer

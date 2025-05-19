@@ -9,7 +9,7 @@ type PokemonState = {
   isLoading: boolean
   error: string | null
   currentPage: number
-  totalPages?: number
+  totalPages: number
 }
 
 const initialState: PokemonState = {
@@ -35,17 +35,10 @@ export const fetchPokemons = createAsyncThunk(
   }
 )
 
-const pokemonsListSlice = createSlice({
+export const pokemonsListSlice = createSlice({
   name: 'pokemons',
   initialState,
-  reducers: {
-    toggleFavorite: (state, action: PayloadAction<number>) => {
-      const pokemon = state.list.find((p) => p.id === action.payload)
-      if (pokemon) {
-        pokemon.isFavorite = !pokemon.isFavorite
-      }
-    }
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchPokemons.pending, (state) => {
@@ -63,9 +56,7 @@ const pokemonsListSlice = createSlice({
             id,
             name: pokemon.name,
             url: pokemon.url,
-            image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`,
-            isFavorite: false,
-            isComparison: false
+            image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
           }
         })
         if (action.payload.previous) {
@@ -84,7 +75,3 @@ const pokemonsListSlice = createSlice({
       })
   }
 })
-
-export const { toggleFavorite } = pokemonsListSlice.actions
-
-export default pokemonsListSlice.reducer
