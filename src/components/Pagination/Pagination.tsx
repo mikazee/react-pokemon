@@ -1,42 +1,28 @@
 import React from 'react'
 import styles from './Pagination.module.css'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchPokemons } from '../../store/pokemons/slice.ts'
-import { AppDispatch, RootState } from '../../store'
-import { Loader } from '../loader/Loader.tsx'
 
-type PaginationProps = {
-  currentPage: number
+type Pagination = {
   totalPages: number
+  currentPage: number
+  handleNext?: () => void
+  handlePrevious?: () => void
 }
 
-const Pagination: React.FC<PaginationProps> = () => {
-  const dispatch = useDispatch<AppDispatch>()
-  const { currentPage, totalPages, next, previous, isLoading } = useSelector(
-    (state: RootState) => state.pokemons
-  )
-
-  const handleNext = () => {
-    if (next && !isLoading) {
-      dispatch(fetchPokemons(next))
-    }
-  }
-
-  const handlePrevious = () => {
-    if (previous && !isLoading) {
-      dispatch(fetchPokemons(previous))
-    }
-  }
-
+const Pagination: React.FC<Pagination> = ({
+  currentPage,
+  totalPages,
+  handlePrevious,
+  handleNext
+}) => {
   return (
     <div className={styles.pagination}>
-      <button onClick={handlePrevious} disabled={!previous || isLoading}>
+      <button onClick={handlePrevious} disabled={currentPage === 1}>
         Previous
       </button>
       <span>
-        {isLoading ? <Loader pagination={true} /> : `Page ${currentPage} of ${totalPages}`}
+        Page {currentPage} of {totalPages}
       </span>
-      <button onClick={handleNext} disabled={!next || isLoading}>
+      <button onClick={handleNext} disabled={currentPage === totalPages}>
         Next
       </button>
     </div>

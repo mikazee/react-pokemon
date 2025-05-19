@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
-import pokemonsReducer from './pokemons/slice.ts'
-import pokemonDetailsReducer from './pokemon-details/slice.ts'
+import { pokemonsListSlice } from './pokemons/slice.ts'
+import { pokemonDetailsSlice } from './pokemon-details/slice.ts'
+import { pokemonFavoritesSlice } from './favorite-pokemons/slice.ts'
 
 const rootReducer = {
-  pokemons: pokemonsReducer,
-  pokemon: pokemonDetailsReducer
+  pokemonsList: pokemonsListSlice.reducer,
+  pokemonDetails: pokemonDetailsSlice.reducer,
+  pokemonsFavorite: pokemonFavoritesSlice.reducer
 }
 
 export const store = configureStore({

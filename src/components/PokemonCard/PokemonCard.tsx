@@ -22,7 +22,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon }) => {
             {pokemon.stats.map((stat) => (
               <li key={stat.name}>
                 <p>
-                  {stat.name}:<strong>{stat.value}</strong>
+                  {stat.name}: <strong>{stat.value}</strong>
                 </p>
               </li>
             ))}

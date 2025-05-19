@@ -48,15 +48,13 @@ const ActionButtons: React.FC<Props> = ({
       <button
         onClick={onFavorite}
         className={`${styles.button} ${isFavorite ? styles.active : ''}`}>
-        {showText ? 'Add to Favorites' : ''}
-        {isNav ? 'Favorites' : ''}
+        {showText ? 'Favorite' : ''}
         <MdFavorite />
       </button>
       <button
         onClick={onComparison}
         className={`${styles.button} ${isComparison ? styles.active : ''}`}>
         {showText ? 'Compare' : ''}
-        {isNav ? 'Comparisons' : ''}
         <FaCodeCompare />
       </button>
     </div>
