@@ -2,7 +2,7 @@ import PokemonsComparison from '../../components/PokemonsComparison/PokemonsComp
 import { useLoaderData } from 'react-router-dom'
 import { PokemonDetails } from '../../types'
 
-const handleRemovePokemon = (id: string) => {
+const handleRemovePokemon = (id: number) => {
   console.log(id)
 }
 

@@ -1,18 +1,16 @@
-import { useRouteError } from 'react-router-dom'
+import React from 'react'
 
-type RouteError = {
-  statusText?: string
-  message?: string
+type ErrorPageProps = {
+  errorMessage?: string
 }
 
-export default function ErrorPage() {
-  const error = useRouteError() as RouteError
-
+const ErrorPage: React.FC<ErrorPageProps> = ({ errorMessage }) => {
   return (
     <div>
-      <h1>Oops!</h1>
-      <p>Sorry, an unexpected error occured.</p>
-      <p>{error.statusText || error.message || 'Unknown error'}</p>
+      <h2>Something went wrong</h2>
+      <p>{errorMessage || 'Unknown error occurred'}</p>
     </div>
   )
 }
+
+export default ErrorPage
