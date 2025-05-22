@@ -2,8 +2,8 @@ import PokemonDetails from '../../components/PokemonDetails/PokemonDetails.tsx'
 import { useParams } from 'react-router-dom'
 import { AppDispatch } from '../../store'
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
-import { fetchPokemonById, setPokemonDetailsError } from '../../store/pokemon-details/slice.ts'
+import React, { useEffect } from 'react'
+import { setPokemonDetailsError } from '../../store/pokemon-details/slice.ts'
 import {
   getPokemonDetails,
   getPokemonDetailsError,
@@ -11,17 +11,20 @@ import {
 } from '../../store/pokemon-details/selectors.ts'
 import ErrorPage from '../error-page'
 import { Loader } from '../../components/loader/Loader.tsx'
+import { fetchPokemonById } from '../../services'
+import { toggleFavorite } from '../../store/favorite-pokemons/slice.ts'
+import { addPokemonFromDetailsPage } from '../../store/compare-pokemons/slice.ts'
 
 const PokemonDetailsPage = () => {
   const { id } = useParams<{ id: string }>()
   const dispatch = useDispatch<AppDispatch>()
-  const pokemon = useSelector(getPokemonDetails)
   const isLoading = useSelector(getPokemonDetailsLoading)
+  const pokemon = useSelector(getPokemonDetails)
   const error = useSelector(getPokemonDetailsError)
 
   useEffect(() => {
     if (id) {
-      dispatch(fetchPokemonById(id))
+      dispatch(fetchPokemonById(+id))
     } else {
       dispatch(setPokemonDetailsError('Pokemon not found'))
     }
@@ -35,7 +38,22 @@ const PokemonDetailsPage = () => {
     return <ErrorPage errorMessage={error} />
   }
 
-  return <PokemonDetails pokemon={pokemon} />
+  const onFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    dispatch(toggleFavorite(pokemon.id))
+  }
+  const onComparison = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    dispatch(addPokemonFromDetailsPage(pokemon))
+  }
+
+  return (
+    <PokemonDetails
+      pokemon={pokemon as PokemonDetails}
+      onFavorite={onFavorite}
+      onComparison={onComparison}
+    />
+  )
 }
 
 export default PokemonDetailsPage

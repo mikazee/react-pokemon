@@ -5,21 +5,23 @@ import ActionButtons from '../button/ActionButtons.tsx'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { toggleFavorite } from '../../store/favorite-pokemons/slice.ts'
+import { AppDispatch } from '../../store'
+import { fetchPokemonFromList } from '../../services'
 
 type Props = {
   pokemon: PokemonListItem
 }
 
 const PokemonItem: React.FC<Props> = ({ pokemon }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<AppDispatch>()
 
   const onFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     dispatch(toggleFavorite(pokemon.id))
   }
   const onComparison = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation()
-    console.log(`${pokemon.name} clicked for Comparison`)
+    e.preventDefault()
+    dispatch(fetchPokemonFromList(pokemon.id))
   }
 
   return (
@@ -34,7 +36,7 @@ const PokemonItem: React.FC<Props> = ({ pokemon }) => {
             onComparison={onComparison}
             onFavorite={onFavorite}
             isFavorite={pokemon.isFavorite}
-            isComparison={false}
+            isComparison={pokemon.isComparison}
           />
         </div>
         <img className={styles.pokemonImage} src={pokemon.image} alt="Pokemon image" />

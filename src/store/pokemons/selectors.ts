@@ -1,19 +1,17 @@
 import { RootState } from '../index.ts'
 import { getFavoritePokemonState } from '../favorite-pokemons/selectors.ts'
+import { getComparedPokemonsState } from '../compare-pokemons/selectors.ts'
+import { createSelector } from 'reselect'
+import { PokemonWithFavoriteAndCompare } from '../../utils'
 
 export const getPokemonsList = (state: RootState) => state.pokemonsList
 
-export const getPokemonsFavFilterList = (favOnly: boolean) => (state: RootState) => {
-  const { list: originalList } = getPokemonsList(state)
-  const { list: favList } = getFavoritePokemonState(state)
+export const getPokemonsListItems = createSelector(
+  [getPokemonsList, getFavoritePokemonState, getComparedPokemonsState],
+  ({ list: originalList }, { list: favList }, { list: compareList }) =>
+    originalList.map((pokemon) => PokemonWithFavoriteAndCompare(pokemon, favList, compareList))
+)
 
-  if (favOnly) {
-    return originalList
-      .filter((pokemon) => favList.includes(pokemon.id))
-      .map((pokemon) => ({ ...pokemon, isFavorite: true }))
-  }
-  return originalList.map((pokemon) => ({
-    ...pokemon,
-    isFavorite: favList.includes(pokemon.id)
-  }))
-}
+export const getPokemonsListFavItems = createSelector([getPokemonsListItems], (list) =>
+  list.filter((p) => p.isFavorite)
+)

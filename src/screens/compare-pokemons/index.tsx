@@ -1,14 +1,18 @@
 import PokemonsComparison from '../../components/PokemonsComparison/PokemonsComparison'
-import { useLoaderData } from 'react-router-dom'
-import { PokemonDetails } from '../../types'
-
-const handleRemovePokemon = (id: number) => {
-  console.log(id)
-}
+import { useDispatch, useSelector } from 'react-redux'
+import { getComparedPokemonsSelector } from '../../store/compare-pokemons/selectors.ts'
+import { AppDispatch } from '../../store'
+import { removePokemon } from '../../store/compare-pokemons/slice.ts'
 
 const PokemonsComparisonPage = () => {
-  const pokemons = useLoaderData() as PokemonDetails[]
-  return <PokemonsComparison pokemons={pokemons} onRemovePokemon={handleRemovePokemon} />
+  const comparedPokemons = useSelector(getComparedPokemonsSelector)
+  const dispatch = useDispatch<AppDispatch>()
+
+  const handleRemovePokemon = (id: number) => {
+    dispatch(removePokemon(id))
+  }
+
+  return <PokemonsComparison pokemons={comparedPokemons} onRemovePokemon={handleRemovePokemon} />
 }
 
 export default PokemonsComparisonPage
