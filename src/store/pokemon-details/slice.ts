@@ -1,5 +1,6 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { PokemonDetails, PokemonDetailsApiResponse } from '../../types'
+import { createSlice } from '@reduxjs/toolkit'
+import { PokemonDetails } from '../../types'
+import { fetchPokemonById } from '../../services'
 
 type PokemonDetailsState = {
   pokemon: PokemonDetails
@@ -14,39 +15,13 @@ const initialState: PokemonDetailsState = {
     image: '',
     height: 0,
     weight: 0,
-    stats: []
+    stats: [],
+    isFavorite: false,
+    isComparison: false
   },
   isLoading: false,
   error: null
 }
-
-export const fetchPokemonById = createAsyncThunk(
-  'pokemon/fetchPokemonById',
-  async (id: string, { rejectWithValue }) => {
-    try {
-      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
-
-      if (!response.ok) {
-        new Error(`Pokemon with id '${id}' not found`)
-      }
-
-      const data: PokemonDetailsApiResponse = await response.json()
-      return {
-        id: data.id,
-        name: data.name,
-        image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`,
-        height: data.height,
-        weight: data.weight,
-        stats: data.stats.map((stat) => ({
-          name: stat.stat.name,
-          value: stat.base_stat
-        }))
-      }
-    } catch (error) {
-      return rejectWithValue(error instanceof Error ? error.message : 'Unknown error')
-    }
-  }
-)
 
 export const pokemonDetailsSlice = createSlice({
   name: 'pokemon',
@@ -61,6 +36,7 @@ export const pokemonDetailsSlice = createSlice({
     builder
       .addCase(fetchPokemonById.pending, (state) => {
         state.isLoading = true
+        state.error = null
       })
       .addCase(fetchPokemonById.fulfilled, (state, action) => {
         state.isLoading = false

@@ -6,16 +6,11 @@ import ActionButtons from '../button/ActionButtons.tsx'
 
 type PokemonDetailsProps = {
   pokemon: PokemonDetails
+  onComparison?: (e: React.MouseEvent<HTMLButtonElement>) => void
+  onFavorite?: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-const PokemonDetails: React.FC<PokemonDetailsProps> = ({ pokemon }) => {
-  const onFavorite = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault()
-  }
-  const onComparison = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation()
-    console.log('Comparison clicked')
-  }
+const PokemonDetails: React.FC<PokemonDetailsProps> = ({ pokemon, onFavorite, onComparison }) => {
   return (
     <div className={styles.container}>
       <PokemonCard pokemon={pokemon} />

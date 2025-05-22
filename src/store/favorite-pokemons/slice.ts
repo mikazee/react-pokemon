@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { PokemonListItem } from '../../types'
 
-type FavoriteStates = {
+export type FavoriteStates = {
   list: PokemonListItem['id'][]
 }
 

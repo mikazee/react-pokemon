@@ -6,14 +6,15 @@ import { useEffect } from 'react'
 import { fetchPokemons } from '../../store/pokemons/slice.ts'
 import { Loader } from '../../components/loader/Loader.tsx'
 import ErrorPage from '../error-page'
-import { getPokemonsFavFilterList, getPokemonsList } from '../../store/pokemons/selectors.ts'
+import { getPokemonsListItems, getPokemonsList } from '../../store/pokemons/selectors.ts'
+// import { Toaster } from 'react-hot-toast'
 
 export const PokemonsListPage = () => {
   const dispatch = useDispatch<AppDispatch>()
 
   const { isLoading, error, currentPage, totalPages, next, previous } = useSelector(getPokemonsList)
 
-  const filteredPokemons = useSelector(getPokemonsFavFilterList(false))
+  const filteredPokemons = useSelector(getPokemonsListItems)
 
   useEffect(() => {
     dispatch(fetchPokemons('https://pokeapi.co/api/v2/pokemon?limit=20'))
@@ -41,6 +42,16 @@ export const PokemonsListPage = () => {
 
   return (
     <>
+      {/*<Toaster*/}
+      {/*  position="top-center"*/}
+      {/*  toastOptions={{*/}
+      {/*    duration: 3000,*/}
+      {/*    style: {*/}
+      {/*      background: '#363636',*/}
+      {/*      color: '#fff'*/}
+      {/*    }*/}
+      {/*  }}*/}
+      {/*/>*/}
       <PokemonsList pokemons={filteredPokemons} />
       <Pagination
         currentPage={currentPage}

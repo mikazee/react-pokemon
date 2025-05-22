@@ -12,8 +12,18 @@ type CompareProps = {
 }
 
 const PokemonsComparison: React.FC<CompareProps> = ({ pokemons, onRemovePokemon }) => {
+  if (pokemons.length === 0) {
+    return (
+      <div className={styles.container}>
+        <h2 className={styles.pageTitle}>Compare Pokemons</h2>
+        <p>Please select pokemons to compare</p>
+      </div>
+    )
+  }
+
   const firstPokemon = pokemons[0]
   const secondPokemon = pokemons[1]
+  const hasTwoPokemons = pokemons.length === 2
   const stats = firstPokemon.stats
 
   return (
@@ -33,14 +43,26 @@ const PokemonsComparison: React.FC<CompareProps> = ({ pokemons, onRemovePokemon 
           <img className={styles.pokeball} src={pokeBall} alt="Pokeball" />
         </div>
 
-        <div className={`${styles.pokemonCard} ${styles.firstRowItem}`}>
-          <button className={styles.deleteButton} onClick={() => onRemovePokemon(secondPokemon.id)}>
-            <TiDelete />
-          </button>
-          <h3 className={styles.pokemonName}>{secondPokemon.name}</h3>
-          <p className={styles.pokemonId}>#{secondPokemon.id}</p>
-          <img className={styles.pokemonImage} src={secondPokemon.image} alt={secondPokemon.name} />
-        </div>
+        {hasTwoPokemons ? (
+          <div className={`${styles.pokemonCard} ${styles.firstRowItem}`}>
+            <button
+              className={styles.deleteButton}
+              onClick={() => onRemovePokemon(secondPokemon.id)}>
+              <TiDelete />
+            </button>
+            <h3 className={styles.pokemonName}>{secondPokemon.name}</h3>
+            <p className={styles.pokemonId}>#{secondPokemon.id}</p>
+            <img
+              className={styles.pokemonImage}
+              src={secondPokemon.image}
+              alt={secondPokemon.name}
+            />
+          </div>
+        ) : (
+          <div className={`${styles.pokemonCard} ${styles.firstRowItem} ${styles.emptyCard}`}>
+            <h3>Add Pokemon</h3>
+          </div>
+        )}
 
         <div className={styles.measurement}>
           <span>{firstPokemon.height} m</span>
@@ -49,7 +71,7 @@ const PokemonsComparison: React.FC<CompareProps> = ({ pokemons, onRemovePokemon 
           <TbRulerMeasure2 />
         </div>
         <div className={styles.measurement}>
-          <span>{secondPokemon.height} m</span>
+          <span>{hasTwoPokemons ? secondPokemon.height + ' m' : '-'}</span>
         </div>
 
         <div className={`${styles.measurement} ${styles.leftItem}`}>
@@ -59,7 +81,7 @@ const PokemonsComparison: React.FC<CompareProps> = ({ pokemons, onRemovePokemon 
           <LuWeight />
         </div>
         <div className={`${styles.measurement} ${styles.rightItem}`}>
-          <span>{secondPokemon.weight} kg</span>
+          <span>{hasTwoPokemons ? secondPokemon.weight + ' kg' : '-'}</span>
         </div>
 
         <div className={styles.divider}></div>
@@ -77,7 +99,7 @@ const PokemonsComparison: React.FC<CompareProps> = ({ pokemons, onRemovePokemon 
             </div>
             <div className={styles.statLabel}>{stat.name}</div>
             <div className={`${styles.statValue} ${styles.rightItem}`}>
-              {secondPokemon.stats[index].value}
+              {hasTwoPokemons ? secondPokemon.stats[index].value : '-'}
             </div>
           </React.Fragment>
         ))}

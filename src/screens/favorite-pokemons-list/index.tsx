@@ -1,11 +1,11 @@
 import PokemonsList from '../../components/PokemonList/PokemonsList.tsx'
 import { useSelector } from 'react-redux'
-import { getPokemonsFavFilterList } from '../../store/pokemons/selectors.ts'
+import { getPokemonsListFavItems } from '../../store/pokemons/selectors.ts'
 
 export const FavoritePokemonsPage = () => {
-  const filteredPokemons = useSelector(getPokemonsFavFilterList(true))
+  const filteredPokemons = useSelector(getPokemonsListFavItems)
   if (filteredPokemons.length === 0) {
-    return <h3>You don't have a favorite Pokemons</h3>
+    return <p>You don't have a favorite Pokemons</p>
   }
   return <PokemonsList pokemons={filteredPokemons} isFavoriteList />
 }

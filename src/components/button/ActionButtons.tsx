@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './ActionButtons.module.css'
 import { MdFavorite } from 'react-icons/md'
 import { FaCodeCompare } from 'react-icons/fa6'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 type Props = {
   onFavorite?: (e: React.MouseEvent<HTMLButtonElement>) => void
@@ -25,35 +25,33 @@ const ActionButtons: React.FC<Props> = ({
   favoriteLink = '/favorites',
   comparisonLink = '/comparison'
 }) => {
+  const favActiveness = isFavorite ? styles.active : ''
+  const compActiveness = isComparison ? styles.active : ''
   if (isNav) {
     return (
       <div className={styles.actions}>
         <NavLink
           to={favoriteLink}
-          className={`${styles.button} ${styles.navButton} ${isFavorite ? styles.active : ''}`}>
+          className={`${styles.button} ${styles.navButton} ${favActiveness}`}>
           Favorites
           <MdFavorite />
         </NavLink>
-        <Link
+        <NavLink
           to={comparisonLink}
-          className={`${styles.button} ${styles.navButton}  ${isComparison ? styles.active : ''}`}>
+          className={`${styles.button} ${styles.navButton}  ${compActiveness}`}>
           Comparison
           <FaCodeCompare />
-        </Link>
+        </NavLink>
       </div>
     )
   }
   return (
     <div className={styles.actions}>
-      <button
-        onClick={onFavorite}
-        className={`${styles.button} ${isFavorite ? styles.active : ''}`}>
+      <button onClick={onFavorite} className={`${styles.button} ${favActiveness}`}>
         {showText ? 'Favorite' : ''}
         <MdFavorite />
       </button>
-      <button
-        onClick={onComparison}
-        className={`${styles.button} ${isComparison ? styles.active : ''}`}>
+      <button onClick={onComparison} className={`${styles.button} ${compActiveness}`}>
         {showText ? 'Compare' : ''}
         <FaCodeCompare />
       </button>
